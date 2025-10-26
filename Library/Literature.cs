@@ -15,3 +15,9 @@ namespace SharpKnP231.Library
 
     }
 }
+
+/*
+ * CTS - Common Type System - система спільних типів
+ * 
+ * 
+ */

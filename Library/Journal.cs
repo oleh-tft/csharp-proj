@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace SharpKnP231.Library
 {
-    public class Journal : Literature
+    public class Journal : Literature, IPeriodic
     {
         public String Number { get; set; } = null!;
 
         public override string GetCard()
         {
             return $"{base.Title} {this.Number} ({base.Publisher})";
+        }
+
+        public string GetPeriod()
+        {
+            return "Місяць";
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SharpKnP231.Library
 {
@@ -45,6 +46,19 @@ namespace SharpKnP231.Library
                 Year = 2024,
                 Organization = "Міністерство освіти і науки України"
             });
+            Funds.Add(new Hologram()
+            {
+                Title = "Скіфське мистецтво",
+                ArtItem = "Пектораль",
+                Publisher = "Студія 'Лазер'"
+
+            });
+            Funds.Add(new Poster()
+            {
+                Title = "Неонова Ніч",
+                Publisher = "Mistral Films & Black Forest Productions",
+                Date = new DateOnly(2025, 11, 1)
+            });
         }
 
         public void PrintCatalog()
@@ -52,6 +66,51 @@ namespace SharpKnP231.Library
             foreach (Literature literature in Funds)
             {
                 Console.WriteLine(literature.GetCard());
+            }
+        }
+
+        public void PrintPeriodic()
+        {
+            foreach (Literature literature in Funds)
+            {
+                if (literature is IPeriodic lit)
+                {
+                    Console.WriteLine($"Раз у {lit.GetPeriod()}: ");
+                    Console.WriteLine(literature.GetCard());
+                }
+            }
+        }
+
+        public void PrintNonPeriodic()
+        {
+            foreach (Literature literature in Funds)
+            {
+                if (literature is not IPeriodic)
+                {
+                    Console.WriteLine(literature.GetCard());
+                }
+            }
+        }
+
+        public void PrintPrintable()
+        {
+            foreach (Literature literature in Funds)
+            {
+                if (literature is not INonPrintable)
+                {
+                    Console.WriteLine(literature.GetCard());
+                }
+            }
+        }
+
+        public void PrintNonPrintable()
+        {
+            foreach (Literature literature in Funds)
+            {
+                if (literature is INonPrintable)
+                {
+                    Console.WriteLine(literature.GetCard());
+                }
             }
         }
     }

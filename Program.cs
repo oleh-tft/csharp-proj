@@ -3,6 +3,15 @@ using System;
 
 Library library = new();
 library.PrintCatalog();
+Console.WriteLine("\n-----Periodic-----");
+library.PrintPeriodic();
+Console.WriteLine("\n-----NonPeriodic-----");
+library.PrintNonPeriodic();
+Console.WriteLine("\n-------Printable-------");
+library.PrintPrintable();
+Console.WriteLine("\n-----NonPrintable------");
+library.PrintNonPrintable();
+Console.WriteLine("------------------");
 
 return;
 void Task1()
