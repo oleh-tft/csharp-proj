@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -30,8 +31,9 @@ namespace SharpKnP231.Library
             Funds.Add(new Journal()
             {
                 Title = "ArgC & ArgV",
-                Number = "2(113), 2000",
-                Publisher = "https://journals.ua/technology/argc-argv/"
+                Number = "2(113)",
+                Publisher = "https://journals.ua/technology/argc-argv/",
+                Year = 2000
             });
             Funds.Add(new Newspaper()
             {
@@ -110,6 +112,53 @@ namespace SharpKnP231.Library
                 if (literature is INonPrintable)
                 {
                     Console.WriteLine(literature.GetCard());
+                }
+            }
+        }
+
+        public void ShowColorPrintable()
+        {
+            //Пошук за атрибутами - метаданими, що супроводжують методи
+            foreach (Literature literature in Funds)
+            {
+                foreach (var method in literature.GetType().GetMethods())
+                {
+                    var attr = method.GetCustomAttribute<ColorPrintAttribute>();
+                    if (attr != null)
+                    {
+                        //вилучення додаткових даних з атрибуту
+                        for (int i = 0; i < attr.Copies; i++)
+                        {
+                            method.Invoke(literature, ["RGB"]);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void ShowApaCard()
+        {
+            foreach (Literature literature in Funds)
+            {
+                foreach (var method in literature.GetType().GetMethods())
+                {
+                    var attr = method.GetCustomAttribute<ApaStyleAttribute>();
+                    if (attr != null)
+                    {
+                        Console.WriteLine(method.Invoke(literature, null));
+                    }
+                }
+            }
+        }
+
+        public void ShowPrintable()
+        {
+            foreach (Literature literature in Funds)
+            {
+                MethodInfo? printMethod = literature.GetType().GetMethod("Print");
+                if (printMethod != null)
+                {
+                    printMethod.Invoke(literature, null);
                 }
             }
         }

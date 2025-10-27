@@ -15,5 +15,14 @@ namespace SharpKnP231.Library
         {
             return $"{base.Title} - {base.Publisher} - {this.Year}. {this.Organization}";
         }
+        public void Print()
+        {
+            Console.WriteLine("Printing... " + GetCard());
+        }
+        [ColorPrint(Copies = 2)]
+        public void PrintWithColor(String colorScheme)
+        {
+            Console.WriteLine($"In colors '{colorScheme}' Printing... {GetCard()}");
+        }
     }
 }

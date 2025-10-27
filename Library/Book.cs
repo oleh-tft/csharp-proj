@@ -15,5 +15,11 @@ namespace SharpKnP231.Library
         {
             return $"{this.Author}. {base.Title} - {base.Publisher} - {this.Year}";
         }
+
+        [ApaStyle]
+        public string ApaCard()
+        {
+            return $"{this.Author} ({this.Year}) {base.Title}. {base.Publisher}";
+        }
     }
 }
