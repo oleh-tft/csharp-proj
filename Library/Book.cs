@@ -21,5 +21,17 @@ namespace SharpKnP231.Library
         {
             return $"{this.Author} ({this.Year}) {base.Title}. {base.Publisher}";
         }
+
+        [CiteStyle(Style = "APA")]
+        public void ApaCite()
+        {
+            Console.WriteLine($"Book APA Style Cite: {Author}. ({Year}). {Title}. {Publisher}");
+        }
+
+        [CiteStyle(Style = "IEEE")]
+        public void IeeeCite()
+        {
+            Console.WriteLine($"Book IEEE Style Cite: {Author}, {Title}. {Publisher}, {Year}");
+        }
     }
 }

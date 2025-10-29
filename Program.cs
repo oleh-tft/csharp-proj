@@ -98,6 +98,10 @@ void ShowReflection()
     library.ShowColorPrintable();
     Console.WriteLine("\n-------apa style------");
     library.ShowApaCard();
+    Console.WriteLine("\n-------apa style cite------");
+    library.PrintApaCards();
+    Console.WriteLine("\n-------ieee style cite------");
+    library.PrintIeeeCards();
 
 }
 

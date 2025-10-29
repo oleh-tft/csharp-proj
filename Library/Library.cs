@@ -162,5 +162,41 @@ namespace SharpKnP231.Library
                 }
             }
         }
+
+        public void PrintApaCards()
+        {
+            foreach (Literature literature in Funds)
+            {
+                foreach (var method in literature.GetType().GetMethods())
+                {
+                    var attr = method.GetCustomAttribute<CiteStyleAttribute>();
+                    if (attr != null)
+                    {
+                        if (attr.Style.Equals("APA"))
+                        {
+                            method.Invoke(literature, null);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void PrintIeeeCards()
+        {
+            foreach (Literature literature in Funds)
+            {
+                foreach (var method in literature.GetType().GetMethods())
+                {
+                    var attr = method.GetCustomAttribute<CiteStyleAttribute>();
+                    if (attr != null)
+                    {
+                        if (attr.Style.Equals("IEEE"))
+                        {
+                            method.Invoke(literature, null);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
