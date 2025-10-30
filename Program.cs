@@ -1,8 +1,9 @@
 ﻿using SharpKnP231.Library;
+using SharpKnP231.Vectors;
 using System;
 using System.Reflection;
 
-ShowReflection();
+new VectorDemo().Run();
 
 void ShowReflection()
 {
@@ -104,8 +105,6 @@ void ShowReflection()
     library.PrintIeeeCards();
 
 }
-
-
 
 void ShowLibrary()
 {
